@@ -4,9 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HumanBenchmark"
+        xmlns:vm="clr-namespace:HumanBenchmark.ViewModels.Shell"
+        xmlns:sequence="clr-namespace:HumanBenchmark.Views.Sequence"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        d:DataContext="{d:DesignInstance Type=vm:MainShellViewModel}"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <Grid Background="white">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Title, FallbackValue=-}"
+                   FontSize="50"
+                   Foreground="White"
+                   Margin="25, 50 , 3, 0" />
+
+        <ContentControl Grid.Row="1"
+                        Content="{Binding CurrentGame.Screen}" />
+
+
 
     </Grid>
 </Window>
